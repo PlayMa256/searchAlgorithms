@@ -1,5 +1,7 @@
-function Node(x, y, bloqueado, nome){
+function Node(x, y, peso){
 	this.x = x;
 	this.y = y;
-	this.bloqueado = this.bloqueado = (bloqueado === undefined ? true : bloqueado);
+
+	// se peso for == 0, é parede.
+	this.peso = peso;
 }
