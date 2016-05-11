@@ -12,7 +12,7 @@ AStar.prototype.findPath = function(nodeInicial, nodeFinal, Grid) {
 	// essa lista ordena os elementos de maneira com que a heuristica deles sejao menores e estejam em ordem.
 	// ou seja, se eu tirar algum, ele vai me retornar o com menor heuristica.
 
-	var abertos = new (function(nodeA, nodeB){
+	var abertos = new Heap(function(nodeA, nodeB){
 		nodeA.f - nodeB.f;
 	});
 
@@ -21,7 +21,9 @@ AStar.prototype.findPath = function(nodeInicial, nodeFinal, Grid) {
 	//o custo é 0
 	inicial.g = 0;
 
+	//priority queue contendo start
 	abertos.push(inicial);
+
 
 	while(!abertos.empty()){
 		node = abertos.pop();
@@ -45,15 +47,19 @@ AStar.prototype.findPath = function(nodeInicial, nodeFinal, Grid) {
 			var diferencaX = Math.pow(node.x - noVizinho.x, 2);
 			var diferencaY = Math.pow(node.y - noVizinho.x, 2);
 			var novizinhoG = Math.sqrt(diferencaX+diferencaY);
+			var custoTotalEstimadoG = node.g + novizinhoG;
 
-			noVizinho.g = novizinhoG;
-			noVizinho.h = heuristica(noVizinho.x, nodeFinal.x, noVizinho.y, nodeFinal.y);
-			
-
-			if(!_.includes(fechados, noVizinho)){
-
+			if(_.includes(abertos, noVizinho) && custoTotalEstimadoG > node.g){
+				abertos.splice(indexOf(noVizinho), 1);
+			}else if(_.includes(fechados, noVizinho) && custoTotalEstimadoG > node.g){
+				fechados.splice(indexOf(noVizinho, 1));
+			}else if(!_.contains(abertos, noVizinho) && !_.contains(fechados, noVizinho)){
+				noVizinho.g = novizinhoG;
+				noVizinho.h = heuristica(noVizinho.x, nodeFinal.x, noVizinho.y, nodeFinal.y);
+				noVizinho.f = noVizinho.g+noVizinho.h;
+				noVizinho.parent = node;
+				abertos.push(noVizinho);
 			}
-
 		}
 
 	}
