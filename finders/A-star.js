@@ -45,7 +45,11 @@ AStar.prototype.findPath = function(nodeInicial, nodeFinal, Grid) {
 			var diferencaX = Math.pow(node.x - noVizinho.x, 2);
 			var diferencaY = Math.pow(node.y - noVizinho.x, 2);
 			var novizinhoG = Math.sqrt(diferencaX+diferencaY);
+
+			noVizinho.g = novizinhoG;
+			noVizinho.h = heuristica(noVizinho.x, nodeFinal.x, noVizinho.y, nodeFinal.y);
 			
+
 			if(!_.includes(fechados, noVizinho)){
 
 			}
