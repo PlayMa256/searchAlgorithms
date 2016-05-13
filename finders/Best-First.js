@@ -1,5 +1,7 @@
-function BestFirst(options){
-	this.heuristica = options.heuristica;
+function BestFirst(heuristica){
+	if(!heuristica instanceof Heuristica)
+		throw new Error('Erro ao instanciar BestFirst');
+	this.heuristica = heuristica;
 }
 BestFirst.prototype.findPath = function(nodeInicial, nodeFinal, Grid){
 	var node, i, j, k, x, y, vizinhos, vizinhoG, vizinho;

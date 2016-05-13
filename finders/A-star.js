@@ -1,5 +1,7 @@
-function AStar(options){
-	this.heuristica = options.heuristica;
+function AStar(heuristica) {
+	if(!heuristica instanceof Heuristica)
+		throw new Error('Erro ao instanciar AStar');
+	this.heuristica = heuristica;
 }
 
 AStar.prototype.findPath = function(nodeInicial, nodeFinal, Grid) {
@@ -34,7 +36,7 @@ AStar.prototype.findPath = function(nodeInicial, nodeFinal, Grid) {
 			return 0;
 		}
 
-		vizinhos = Grid.getNeighbors(node, true); 
+		vizinhos = Grid.getNeighbors(node, true);
 		for(i=0;i<vizinhos.length;i++){
 			noVizinho = vizinhos[i];
 
