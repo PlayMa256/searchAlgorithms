@@ -2,7 +2,7 @@
 var Heuristica = function() {
 	throw new Error('Erro de metodo abstrato');
 };
-Heuristica.prototype.getValue(begin, end) {
+Heuristica.prototype.getValue = function(begin, end){
 	throw new Error('Erro de metodo abstrato');
 };
 
@@ -15,7 +15,7 @@ var Manhattan = function() {
 Manhattan.prototype = Object.create(Heuristica.prototype);
 Manhattan.prototype.constructor = Manhattan;
 
-Manhattan.prototype.getValue(begin, end) {
+Manhattan.prototype.getValue = function(begin, end) {
 	begin = Node.buildNodeFrom(begin);
 	end = Node.buildNodeFrom(end);
 
@@ -33,7 +33,7 @@ var DistanciaEuclidiana = function() {
 DistanciaEuclidiana.prototype = Object.create(Heuristica.prototype);
 DistanciaEuclidiana.prototype.constructor = DistanciaEuclidiana;
 
-DistanciaEuclidiana.prototype.getValue(begin, end) {
+DistanciaEuclidiana.prototype.getValue = function(begin, end) {
 	begin = Node.buildNodeFrom(begin);
 	end = Node.buildNodeFrom(end);
 

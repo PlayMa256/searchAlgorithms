@@ -1,8 +1,8 @@
 function Grid(matriz) {
 	this.matriz = matriz;
 	this.altura = matriz.length;
-	this.largura = matriz[].length;
-	this.nodes = _popularMatriz(largura, altura, matriz);
+	this.largura = matriz[0].length;
+	this.nodes = this._popularMatriz(this.largura, this.altura, matriz);
 }
 
 Grid.prototype._popularMatriz = function(largura, altura, matriz) {
@@ -12,7 +12,8 @@ Grid.prototype._popularMatriz = function(largura, altura, matriz) {
 	for (i = 0; i < altura; i++) {
 		nodes[i] = new Array(largura);
 		for (j = 0; j < largura; j++){
-			nodes[i][j] = new Node(i, j, !matriz[i][j]);
+			var valor = (matriz[i][j]==0) ? false : true;
+			nodes[i][j] = new Node(i, j, valor);
 		}
 	}
 
