@@ -13,6 +13,7 @@ AStar.prototype.findPath = function(nodeInicial, nodeFinal, Grid) {
 
 	// essa lista ordena os elementos de maneira com que a heuristica deles sejao menores e estejam em ordem.
 	// ou seja, se eu tirar algum, ele vai me retornar o com menor heuristica.
+
 	var abertos = new Heap(function(nodeA, nodeB) {
 		nodeA.hVal - nodeB.hVal;
 	});
@@ -31,7 +32,8 @@ AStar.prototype.findPath = function(nodeInicial, nodeFinal, Grid) {
 		fechados.push(node);
 
 		if(node === nodeFinal){
-            return backtrace(node);
+			// TODO ver o que ainda retornar
+			return 0;
 		}
 
 		// Encontra somente vizinhos que nao sao parede/obstaculo
@@ -56,7 +58,8 @@ AStar.prototype.findPath = function(nodeInicial, nodeFinal, Grid) {
 
 			// se noVizinho nao estiver em aberto e em fechado
 			}else if(!_.contains(abertos, noVizinho) && !_.contains(fechados, noVizinho)){
-				noVizinho.custo = custoTotalEstimadoG;
+                // era uma pergunta pra mim ou pra vc?
+				noVizinho.custo = custoTotalEstimadoG;	// ahn? custo de noVizinho eh 1?
 				noVizinho.hVal = noVizinho.custo + this.heuristica.getValue(noVizinho, nodeFinal);
 				noVizinho.parent = node;
 				abertos.push(noVizinho);
@@ -64,4 +67,4 @@ AStar.prototype.findPath = function(nodeInicial, nodeFinal, Grid) {
 		}
 
 	}
-}
+};

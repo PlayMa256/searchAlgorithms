@@ -15,8 +15,8 @@ BestFirst.prototype.findPath = function(nodeInicial, nodeFinal, Grid){
 		node = abertos.pop();
 
 		if (node === nodeFinal) {
-			return 0;
-		}
+		    return backtrack(node);
+        }
 
 		vizinhos = Grid.getVizinhos(node);
 		for (i = 0; i < vizinhos.length; i++) {
