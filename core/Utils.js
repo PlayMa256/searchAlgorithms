@@ -36,10 +36,17 @@ function pintarGrid(grid, caminho) {
         } catch(err) {
             console.error('Pintura de ' + ponto.x + ',' + ponto.y + ' nao foi bem sucedida.');
         }
-    })
+    });
 }
 function pintarCelula(grid, ponto) {
     var ind = grid.largura * ponto.y + ponto.x;
     var celula = document.querySelectorAll('.celula')[ind];
     celula.classList.add('is-pintada');
+}
+
+function putInfo(algoritmo) {
+    var infoDiv = document.getElementById('info');
+    infoDiv.innerHTML =
+        'Custo de processamento: ' + algoritmo.custo + '<br>' +
+        'Tamanho do caminho: ' + algoritmo.caminho.length;
 }

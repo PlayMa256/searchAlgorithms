@@ -7,6 +7,7 @@ function AStar(heuristica) {
 AStar.prototype.findPath = function(nodeInicial, nodeFinal, grid) {
 	var node, vizinhos, i, j, k, noVizinho, x, vg;
 	var fechados = [];
+	this.custo = 0;
 
 	// essa lista ordena os elementos de maneira com que a heuristica deles sejao menores e estejam em ordem.
 	// ou seja, se eu tirar algum, ele vai me retornar o com menor heuristica.
@@ -25,6 +26,7 @@ AStar.prototype.findPath = function(nodeInicial, nodeFinal, grid) {
 	while(!abertos.empty()){
 		node = abertos.pop();
 		fechados.push(node);
+		this.custo++;
 
 		if(node === nodeFinal){
             this.caminho = backtrace(node);

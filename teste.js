@@ -36,5 +36,6 @@ window.onload = function() {
 		}
 		algoritmo.findPath(grid.getNode(0,0), grid.getNode(4,2), grid);
 		pintarGrid(grid, algoritmo.caminho);
+		putInfo(algoritmo);
 	});
 };
