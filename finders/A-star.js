@@ -25,6 +25,7 @@ AStar.prototype.findPath = function(nodeInicial, nodeFinal, grid) {
 
 	while(!abertos.empty()){
 		node = abertos.pop();
+
 		fechados.push(node);
 		this.custo++;
 
