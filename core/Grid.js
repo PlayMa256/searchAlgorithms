@@ -12,8 +12,8 @@ Grid.prototype._popularMatriz = function(largura, altura, matriz) {
 	for (i = 0; i < altura; i++) {
 		nodes[i] = new Array(largura);
 		for (j = 0; j < largura; j++){
-			var valor = (matriz[i][j]==0) ? false : true;
-			nodes[i][j] = new Node(i, j, valor);
+			var valor = (matriz[i][j] == 1) ? false : true;
+			nodes[i][j] = new Node(j, i, valor);
 		}
 	}
 
@@ -22,13 +22,13 @@ Grid.prototype._popularMatriz = function(largura, altura, matriz) {
 };
 
 Grid.prototype.getNode = function(x, y) {
-	return this.nodes[x][y];
+	return this.nodes[y][x];
 };
 Grid.prototype.isTransitavel = function(x, y) {
-	return this.isDentro(x, y) && this.nodes[x][y].transitavel;
+	return this.isDentro(x, y) && this.getNode(x,y).transitavel;
 };
 Grid.prototype.isDentro = function(x, y) {
-	return (x >= 0 && x < this.width) && (y >= 0 && y < this.height);
+	return (x >= 0 && x < this.largura) && (y >= 0 && y < this.altura);
 };
 Grid.prototype.setTransitavel = function(x, y, transitavel) {
 	this.nodes[x][y].transitavel = transitavel;
@@ -40,21 +40,21 @@ Grid.prototype.getVizinhos = function(node) {
 	var vizinhos = [];
 	var listNodes = this.nodes;
 
-	// para baixo
+	// para cima
 	if (this.isTransitavel(x, y-1)) {
-		vizinhos.push(listNodes[x][y-1]);
+		vizinhos.push(this.getNode(x, y-1));
 	}
 	// para a direita
 	if (this.isTransitavel(x+1, y)) {
-		vizinhos.push(listNodes[x+1][y]);
+		vizinhos.push(this.getNode(x+1, y));
 	}
 	// para a esquerda
 	if (this.isTransitavel(x-1, y)) {
-		vizinhos.push(listNodes[x-1][y]);
+		vizinhos.push(this.getNode(x-1, y));
 	}
-	//para cima
+	//para baixo
 	if (this.isTransitavel(x, y+1)) {
-		vizinhos.push(listNodes[x][y+1]);
+		vizinhos.push(this.getNode(x, y+1));
 	}
 	return vizinhos;
 }

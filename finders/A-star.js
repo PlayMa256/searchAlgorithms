@@ -4,7 +4,7 @@ function AStar(heuristica) {
 	this.heuristica = heuristica;
 }
 
-AStar.prototype.findPath = function(nodeInicial, nodeFinal, Grid) {
+AStar.prototype.findPath = function(nodeInicial, nodeFinal, grid) {
 	var fechados = [];
 
 	var inicial = nodeInicial;
@@ -35,28 +35,28 @@ AStar.prototype.findPath = function(nodeInicial, nodeFinal, Grid) {
 		}
 
 		// Encontra somente vizinhos que nao sao parede/obstaculo
-		vizinhos = Grid.getVizinhos(node);
+		vizinhos = grid.getVizinhos(node);
 		for(i = 0; i < vizinhos.length; i++){
 			noVizinho = vizinhos[i];
 
 			if(_.includes(fechados, noVizinho)){
 				continue;
 			}
-               
-			var novizinhoG = 1;
-			var custoTotalEstimadoG = node.custo + 1;	// sempre 1 ja que esta caminhando nas 4 direcoes cardeais
+
+			var novizinhoCusto = 1;
+			var custoTotalEstimado = node.custo + 1;	// sempre 1 ja que esta caminhando nas 4 direcoes cardeais
 
 			// remover noVizinho de abertos se custo ate noVizinho > custo ate node atual?
-			if (_.includes(abertos, noVizinho) && custoTotalEstimadoG > node.custo) {
+			if (_.includes(abertos, noVizinho) && custoTotalEstimado > node.custo) {
 				abertos.splice(indexOf(noVizinho), 1);
 
 			// remover noVizinho de fechados se custo ate noVizinho > custo ate node atual?
-			}else if(_.includes(fechados, noVizinho) && custoTotalEstimadoG > node.custo){
+			}else if(_.includes(fechados, noVizinho) && custoTotalEstimado > node.custo){
 				fechados.splice(indexOf(noVizinho), 1);
 
 			// se noVizinho nao estiver em aberto e em fechado
-			}else if(!_.contains(abertos, noVizinho) && !_.contains(fechados, noVizinho)){
-				noVizinho.custo = custoTotalEstimadoG;
+			}else if(!_.includes(abertos, noVizinho) && !_.includes(fechados, noVizinho)){
+				noVizinho.custo = custoTotalEstimado;
 				noVizinho.hVal = noVizinho.custo + this.heuristica.getValue(noVizinho, nodeFinal);
 				noVizinho.parent = node;
 				abertos.push(noVizinho);

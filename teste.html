@@ -1,19 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<script src="./core/heap.js"></script>
     <script src="./core/lodash.js"></script>
     <script src="./core/Grid.js"></script>
-	<script src="./core/Util.js"></script>
+	<script src="./core/Utils.js"></script>
 	<script src="./core/Node.js"></script>
 	<script src="./core/Heuristicas.js"></script>
 	<script src="./finders/A-star.js"></script>
 	<script src="./finders/Best-First.js"></script>
 	<script src="teste.js"></script>
+	<style type="text/css">
+		.celula {
+			display: inline-block;
+			margin: 0; padding: 0;
+			width: 30px;
+			height: 30px;
+			border: #000 solid 1px;
+			box-sizing: border-box;
+		}
+		.celula.pintada {
+			background-color: blue;
+		}
+	</style>
 </head>
 <body>
-	
+	<div id="container"></div>
 </body>
 </html>

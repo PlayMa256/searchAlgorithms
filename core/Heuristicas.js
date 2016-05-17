@@ -9,7 +9,6 @@ Heuristica.prototype.getValue = function(begin, end){
 
 // heuristica manhattan
 var Manhattan = function() {
-	Manhattan.apply(this, arguments);
 	this.name = "Manhattan";
 }
 Manhattan.prototype = Object.create(Heuristica.prototype);
@@ -27,7 +26,6 @@ Manhattan.prototype.getValue = function(begin, end) {
 
 // heuristica euclidiana
 var DistanciaEuclidiana = function() {
-	DistanciaEuclidiana.apply(this, arguments);
 	this.name = "Distancia Euclidiana";
 }
 DistanciaEuclidiana.prototype = Object.create(Heuristica.prototype);
