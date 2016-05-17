@@ -29,7 +29,7 @@ function criarGrid(grid){
     }
 }
 function pintarGrid(grid, caminho) {
-    criarGrid(grid)
+    criarGrid(grid);
     caminho.forEach(function(ponto) {
         try {
             pintarCelula(grid, ponto);

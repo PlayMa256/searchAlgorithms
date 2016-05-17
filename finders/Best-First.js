@@ -28,11 +28,16 @@ BestFirst.prototype.findPath = function(nodeInicial, nodeFinal, grid){
 		vizinhos = grid.getVizinhos(node);
 		for (i = 0; i < vizinhos.length; i++) {
 			vizinho = vizinhos[i];
-			if(_.includes(fechados,vizinho))
+
+			if (_.includes(fechados,vizinho))
 				continue;
+
 			vizinho.hVal = this.heuristica.getValue(vizinho, nodeFinal);
 			vizinho.parent = node;
-			abertos.push(vizinho);
+
+			if (vizinho.hVal < node.hVal && !_.includes(abertos, vizinho)) {
+				abertos.push(vizinho);
+			}
 		}
 	}
 };
