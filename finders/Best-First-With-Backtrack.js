@@ -29,11 +29,12 @@ BestFirstWithBacktrack.prototype.findPath = function(nodeInicial, nodeFinal, gri
         // backtrack
         do {
             vizinhos = grid.getVizinhos(node);
-            for (i = 0; i < vizinhos.length; i++) {
-                if(_.includes(fechados, vizinhos[i])) {
-                    vizinhos.splice(i,1);
-                }
-            }
+            vizinhos = vizinhos.filter(function(a){
+                if(_.includes(fechados,a))
+                    return false;
+                else 
+                    return true;
+            });
             if (vizinhos.length == 0){
                 fechados.push(node);
                 node = node.parent;
