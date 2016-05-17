@@ -15,19 +15,20 @@ AStar.prototype.findPath = function(nodeInicial, nodeFinal, grid) {
 	});
 
 	//a heuristica total ainda é 0;
-	inicial.hVal = 0;
+	nodeInicial.hVal = 0;
 	//o custo é 0
-	inicial.custo = 0;
+	nodeInicial.custo = 0;
 
 	//priority queue contendo start
-	abertos.push(inicial);
+	abertos.push(nodeInicial);
 
 	while(!abertos.empty()){
 		node = abertos.pop();
 		fechados.push(node);
 
 		if(node === nodeFinal){
-            return backtrace(node);
+            this.caminho = backtrace(node);
+            return this.caminho;
 		}
 
 		vizinhos = grid.getVizinhos(node);

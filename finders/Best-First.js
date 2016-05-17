@@ -13,7 +13,7 @@ BestFirst.prototype.findPath = function(nodeInicial, nodeFinal, grid){
 		nodeA.hVal - nodeB.hVal;
 	});
 
-	nodeInicial.hVal = 0;
+	nodeInicial.hVal = this.heuristica.getValue(nodeInicial, nodeFinal);
 	abertos.push(nodeInicial);
 	while (!abertos.empty()) {
 		node = abertos.pop();
