@@ -28,7 +28,7 @@ BestFirst.prototype.findPath = function(nodeInicial, nodeFinal, grid){
 		vizinhos = grid.getVizinhos(node);
 		for (i = 0; i < vizinhos.length; i++) {
 			vizinho = vizinhos[i];
-			if(fechados.indexOf(vizinho) >= 0)
+			if(_.includes(fechados,vizinho))
 				continue;
 			vizinho.hVal = this.heuristica.getValue(vizinho, nodeFinal);
 			vizinho.parent = node;
