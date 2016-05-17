@@ -17,6 +17,7 @@ BestFirst.prototype.findPath = function(nodeInicial, nodeFinal, grid){
 	abertos.push(nodeInicial);
 	while (!abertos.empty()) {
 		node = abertos.pop();
+        abertos.clear();
 		fechados.push(node);
 		this.custo++;
 

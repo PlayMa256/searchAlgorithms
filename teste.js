@@ -1,9 +1,9 @@
 // arquivo feito para realizar os testes
 
 var matriz = [
-    [0, 0, 0, 1, 0],
-    [1, 0, 0, 0, 1],
     [0, 0, 1, 0, 0],
+    [0, 0, 0, 1, 0],
+    [0, 0, 1, 0, 0]
 ];
 
 var grid = new Grid(matriz);
@@ -32,6 +32,9 @@ window.onload = function() {
 				break;
 			case 'bf':
 				algoritmo = new BestFirst(heuristica);
+				break;
+			case 'bfb':
+				algoritmo = new BestFirstWithBacktrack(heuristica);
 				break;
 		}
 		algoritmo.findPath(grid.getNode(0,0), grid.getNode(4,2), grid);
