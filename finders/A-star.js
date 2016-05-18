@@ -48,6 +48,8 @@ AStar.prototype.findPath = function(nodeInicial, nodeFinal, grid) {
 
 			abertos.push(noVizinho);
 		}
-
 	}
+
+    this.caminho = null;
+    return this.caminho;
 }

@@ -41,4 +41,7 @@ BestFirst.prototype.findPath = function(nodeInicial, nodeFinal, grid){
 			}
 		}
 	}
+
+    this.caminho = null;
+    return this.caminho;
 };

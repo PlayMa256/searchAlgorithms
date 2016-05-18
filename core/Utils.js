@@ -30,6 +30,7 @@ function criarGrid(grid){
 }
 function pintarGrid(grid, caminho) {
     criarGrid(grid);
+    if(!caminho) return;
     caminho.forEach(function(ponto) {
         try {
             pintarCelula(grid, ponto);
@@ -47,6 +48,10 @@ function pintarCelula(grid, ponto) {
 function putInfo(algoritmo) {
     var infoDiv = document.getElementById('info');
     infoDiv.innerHTML =
-        'Custo de processamento: ' + algoritmo.custo + '<br>' +
-        'Tamanho do caminho: ' + algoritmo.caminho.length;
+        'Custo de processamento: ' + algoritmo.custo + '<br>';
+    if (!!algoritmo.caminho) {
+        infoDiv.innerHTML += 'Tamanho do caminho: ' + algoritmo.caminho.length;
+    } else {
+        infoDiv.innerHTML += 'Caminho n&atilde;o encontrado';
+    }
 }

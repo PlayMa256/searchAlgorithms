@@ -32,15 +32,18 @@ BestFirstWithBacktrack.prototype.findPath = function(nodeInicial, nodeFinal, gri
             vizinhos = vizinhos.filter(function(a){
                 if(_.includes(fechados,a))
                     return false;
-                else 
+                else
                     return true;
             });
             if (vizinhos.length == 0){
                 fechados.push(node);
                 node = node.parent;
+                if (node == undefined) {
+                    this.caminho = null;
+                    return this.caminho;
+                }
             }
         } while (vizinhos.length == 0);
-
         for (i = 0; i < vizinhos.length; i++) {
             vizinho = vizinhos[i];
             vizinho.hVal = this.heuristica.getValue(vizinho, nodeFinal);
@@ -49,4 +52,6 @@ BestFirstWithBacktrack.prototype.findPath = function(nodeInicial, nodeFinal, gri
         }
     }
 
+    this.caminho = null;
+    return this.caminho;
 };
