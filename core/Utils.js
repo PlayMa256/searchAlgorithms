@@ -20,6 +20,7 @@ function criarGrid(grid){
     for (i = 0; i < grid.altura; i++) {
         for (j = 0; j < grid.largura; j++) {
             var clone = celula.cloneNode();
+            // clone.classList.add(i+""+j);
             if (!grid.isTransitavel(j, i)) {
                 clone.classList.add('bloqueada');
             }

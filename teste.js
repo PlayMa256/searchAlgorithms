@@ -172,20 +172,20 @@ window.onload = function() {
 
 // }
 
-  // document.getElementById("geraGrid").addEventListener('click', function(){
-  //   criarGrid(grid);
+  document.getElementById("geraGrid").addEventListener('click', function(){
+    criarGrid(grid);
 
-  //   var element = document.getElementsByClassName("celula");
-  //   for(var i=0;i<element.length;i++){
-  //     var elemento = element[i];
-  //     //elemento.addEventListener('click', pinta, false);
-  //     addEventListenerOnce(elemento, "click", function (event, elemento) {
-  //           elemento.style.cssText="background-color:purple;";
-  //      });
+    var element = document.getElementsByClassName("celula");
+    for(var i=0;i<element.length;i++){
+      var elemento = element[i];
+      elemento.addEventListener('click', function fn(){
+   this.style.cssText = "background-color:purple;";
+      });
+      
 
 
-  //   }
-  // });
+    }
+  });
 
 
 };
