@@ -53,7 +53,7 @@ var teste5 = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ];
 
-var grid = new Grid(teste7  );
+var grid = new Grid(teste5);
 
 var heuristica,
 	algoritmo;
@@ -85,4 +85,24 @@ window.onload = function() {
 		pintarGrid(grid, algoritmo.caminho);
 		putInfo(algoritmo);
 	});
+
+var pinta = function(element){
+  this.style.cssText = "background-color:purple;";
+};
+  var handler = function(){
+      this.addEventListener('click', pinta);
+  };
+  document.getElementById("geraGrid").addEventListener('click', function(){
+    criarGrid(grid);
+
+    var element = document.getElementsByClassName("celula");
+    for(var i=0;i<element.length;i++){
+      var elemento = element[i];
+      elemento.addEventListener('click',handler);
+
+
+    }
+  });
+
+
 };
