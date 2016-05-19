@@ -4,8 +4,8 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<script src="./core/heap.js"></script>
-    <script src="./core/lodash.js"></script>
-    <script src="./core/Grid.js"></script>
+  <script src="./core/lodash.js"></script>
+  <script src="./core/Grid.js"></script>
 	<script src="./core/Utils.js"></script>
 	<script src="./core/Node.js"></script>
 	<script src="./core/Heuristicas.js"></script>
@@ -28,19 +28,28 @@
 		.celula.bloqueada {
 			background-color: black;
 		}
+		#container{
+			line-height: 0;
+		}
+		#opcoes{
+			margin-bottom: 10px;
+		}
 	</style>
 </head>
 <body>
-	<select id="selHeu">
-		<option value="ma">Manhattan</option>
-		<option value="de">Distancia euclidiana</option>
-	</select>
-	<select id="selAlg">
-		<option value="as">A*</option>
-		<option value="bf">Best First</option>
-		<option value="bfb">Best First With Backtrack</option>
-	</select>
-	<button id="btnAndar">Andar</button>
+	<h3>Selecione qual algoritmo e qual heurística deseja utilizar</h3>
+	<div id="opcoes">
+		<select id="selHeu">
+			<option value="ma">Manhattan</option>
+			<option value="de">Distancia euclidiana</option>
+		</select>
+		<select id="selAlg">
+			<option value="as">A*</option>
+			<option value="bf">Best First</option>
+			<option value="bfb">Best First With Backtrack</option>
+		</select>
+		<button id="btnAndar">Andar</button>
+	</div>
 	<div id="container"></div>
 	<div id="info"></div>
 </body>
