@@ -160,20 +160,28 @@ window.onload = function() {
 		pintarGrid(grid, algoritmo.caminho);
 		putInfo(algoritmo);
 	});
+function addEventListenerOnce(target, type, listener) {
+    target.addEventListener(type, function fn(event) {
+        target.removeEventListener(type, fn);
+        listener(event, target);
+    });
+}
 
-var pinta = function(element){
+function pinta(){
   this.style.cssText = "background-color:purple;";
-};
-  var handler = function(){
-      this.addEventListener('click', pinta);
-  };
+
+}
+
   document.getElementById("geraGrid").addEventListener('click', function(){
     criarGrid(grid);
 
     var element = document.getElementsByClassName("celula");
     for(var i=0;i<element.length;i++){
       var elemento = element[i];
-      elemento.addEventListener('click',handler);
+      //elemento.addEventListener('click', pinta, false);
+      addEventListenerOnce(elemento, "click", function (event, elemento) {
+            elemento.style.cssText="background-color:purple;";
+       });
 
 
     }
