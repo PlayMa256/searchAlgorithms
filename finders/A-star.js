@@ -15,7 +15,7 @@ AStar.prototype.findPath = function(nodeInicial, nodeFinal, grid) {
 	// essa lista ordena os elementos de maneira com que a heuristica deles sejao menores e estejam em ordem.
 	// ou seja, se eu tirar algum, ele vai me retornar o com menor heuristica.
 	var abertos = new Heap(function(nodeA, nodeB) {
-		nodeA.hVal - nodeB.hVal;
+		return nodeA.hVal -nodeB.hVal;
 	});
 
 	//a heuristica total ainda é 0;
