@@ -2,6 +2,9 @@ function AStar(heuristica) {
 	if(!heuristica instanceof Heuristica)
 		throw new Error('Erro ao instanciar AStar');
 	this.heuristica = heuristica;
+	this.nome = 'A*';
+    this.caminho = [];
+    this.custo = 0;
 }
 
 AStar.prototype.findPath = function(nodeInicial, nodeFinal, grid) {

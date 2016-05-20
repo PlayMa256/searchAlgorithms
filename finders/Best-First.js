@@ -2,6 +2,7 @@ function BestFirst(heuristica){
 	if(!heuristica instanceof Heuristica)
 		throw new Error('Erro ao instanciar BestFirst');
 	this.heuristica = heuristica;
+	this.nome = "Best First";
 	this.caminho = [];
 	this.custo = 0;
 }

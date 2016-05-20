@@ -2,6 +2,7 @@ function BestFirstWithBacktrack(heuristica){
     if(!heuristica instanceof Heuristica)
         throw new Error('Erro ao instanciar BestFirstWithBacktrack');
     this.heuristica = heuristica;
+    this.nome = "Best First + Backtrack";
     this.caminho = [];
     this.custo = 0;
 }

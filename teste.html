@@ -1,47 +1,77 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-	<meta charset="UTF-8">
-	<title>SearchAlgorithms</title>
-	<script src="./core/heap.js"></script>
+    <meta charset="UTF-8">
+    <title>SearchAlgorithms</title>
+    <script src="./resources/jquery-2.2.3.min.js"></script>
+    <script src="./core/heap.js"></script>
     <script src="./core/lodash.js"></script>
     <script src="./core/Grid.js"></script>
-	<script src="./core/Utils.js"></script>
-	<script src="./core/Node.js"></script>
-	<script src="./core/Heuristicas.js"></script>
-	<script src="./finders/A-star.js"></script>
-	<script src="./finders/Best-First.js"></script>
-	<script src="./finders/Best-First-With-Backtrack.js"></script>
-	<script src="teste.js"></script>
-	<style type="text/css">
-		.celula {
-			display: inline-block;
-			margin: 0; padding: 0;
-			width: 30px;
-			height: 30px;
-			border: #000 solid 1px;
-			box-sizing: border-box;
-		}
-		.celula.is-pintada {
-			background-color: blue;
-		}
-		.celula.bloqueada {
-			background-color: black;
-		}
-	</style>
+    <script src="./core/Utils.js"></script>
+    <script src="./core/Node.js"></script>
+    <script src="./core/Heuristicas.js"></script>
+    <script src="./finders/A-star.js"></script>
+    <script src="./finders/Best-First.js"></script>
+    <script src="./finders/Best-First-With-Backtrack.js"></script>
+    <script src="./teste.js"></script>
+    <script src="./experimento.js"></script>
+    <style type="text/css">
+        .experimento {
+            display: inline-block;
+            background-color: #ccc;
+            margin: 30px;
+        }
+        .celula {
+            display: inline-block;
+            margin: 0 2px; padding: 0;
+            width: 30px;
+            height: 30px;
+            border: #000 solid 1px;
+            background-color: #fff;
+            box-sizing: border-box;
+        }
+        .celula.is-pintada {
+            background-color: blue;
+        }
+        .celula.bloqueada {
+            background-color: black;
+        }
+        #container{
+            line-height: 0;
+        }
+        #opcoes{
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
-	<select id="selHeu">
-		<option value="ma">Manhattan</option>
-		<option value="de">Distancia euclidiana</option>
-	</select>
-	<select id="selAlg">
-		<option value="as">A*</option>
-		<option value="bf">Best First</option>
-		<option value="bfb">Best First With Backtrack</option>
-	</select>
-	<button id="btnAndar">Andar</button>
-	<div id="container"></div>
-	<div id="info"></div>
+    <h3>Selecione qual algoritmo e qual heurística deseja utilizar</h3>
+    <div id="opcoes">
+        <select id="selHeu">
+            <option value="ma">Manhattan</option>
+            <option value="de">Distancia euclidiana</option>
+        </select>
+        <select id="selAlg">
+            <option value="bf">Best First</option>
+            <option value="bfb">Best First With Backtrack</option>
+        </select>
+        <select id="selExp">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+        </select>
+        <button id="btnExperimentar">Experimentar</button>
+    </div>
+    <div class="experimento">
+        <div class="container"></div>
+        <div class="info"></div>
+    </div>
+    <div class="experimento">
+        <div class="container"></div>
+        <div class="info"></div>
+    </div>
 </body>
 </html>
