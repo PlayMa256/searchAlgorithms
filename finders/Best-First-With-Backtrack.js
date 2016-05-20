@@ -11,7 +11,7 @@ BestFirstWithBacktrack.prototype.findPath = function(nodeInicial, nodeFinal, gri
     var fechados = [];
     this.custo = 0;
     var abertos = new Heap(function(nodeA, nodeB){
-        nodeA.hVal - nodeB.hVal;
+        nodeB.hVal-nodeA.hVal; 
     });
 
     nodeInicial.hVal = this.heuristica.getValue(nodeInicial, nodeFinal);

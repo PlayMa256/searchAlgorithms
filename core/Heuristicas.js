@@ -15,8 +15,6 @@ Manhattan.prototype = Object.create(Heuristica.prototype);
 Manhattan.prototype.constructor = Manhattan;
 
 Manhattan.prototype.getValue = function(begin, end) {
-	begin = Node.buildNodeFrom(begin);
-	end = Node.buildNodeFrom(end);
 
 	var dx = Math.abs (begin.x - end.x);
 	var dy = Math.abs (begin.y - end.y);
@@ -32,8 +30,6 @@ DistanciaEuclidiana.prototype = Object.create(Heuristica.prototype);
 DistanciaEuclidiana.prototype.constructor = DistanciaEuclidiana;
 
 DistanciaEuclidiana.prototype.getValue = function(begin, end) {
-	begin = Node.buildNodeFrom(begin);
-	end = Node.buildNodeFrom(end);
 
 	var dx = Math.abs (begin.x - end.x);
 	var dy = Math.abs (begin.y - end.y);
