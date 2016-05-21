@@ -10,8 +10,8 @@ BestFirst.prototype.findPath = function(nodeInicial, nodeFinal, grid){
 	var node, i, j, k, x, y, vizinhos, vizinhoG, vizinho;
 	var fechados = [];
 	this.custo = 0;
-	var abertos = new Heap(function(nodeA, nodeB){
-		return nodeA.hVal- nodeB.hVal;
+	var abertos = new Heap(function(nodeA, nodeB) {
+		return nodeA.hVal - nodeB.hVal;
 	});
 
 	nodeInicial.hVal = this.heuristica.getValue(nodeInicial, nodeFinal);
