@@ -41,7 +41,12 @@ $(document).ready(function() {
         pintarGrid(grid, container.eq(1), bestfirst.caminho);
         putInfo(info.eq(1), bestfirst);
     });
-
+/**
+ * @param  grid {[Grid]}
+ * @param  pBegin {[Node]}
+ * @param  pEnd {[Node]}
+ * @param  algoritmo
+ */
 function fazerExperimento(grid, pBegin, pEnd, algoritmo) {
     criarGrids(grid);
 	if(grid.isTransitavel(pBegin.x, pBegin.y) && grid.isTransitavel(pEnd.x, pEnd.y)) {
@@ -50,13 +55,21 @@ function fazerExperimento(grid, pBegin, pEnd, algoritmo) {
 		throw new Error('Erro ao tentar criar experimento. Ponto passou dos limites.')
 	}
 }
-
+/**
+ * @param  grid {[type]}
+ * @description [esta função gera as grids para comparação de 2 algoritmos]
+ */
 function criarGrids(grid){
     var container = $('.container');
     container.empty();
     criarGrid(grid, container.eq(0));
     criarGrid(grid, container.eq(1));
 }
+/**
+ * @param  grid {[Grid]}
+ * @param  container {[DomElement]}
+ * @description está função gerá a grid que irá mostrar o caminho e os obstaculos
+ */
 function criarGrid(grid, container) {
     var celula = $(document.createElement('div')).addClass('celula');
     for (i = 0; i < grid.altura; i++) {
@@ -70,6 +83,12 @@ function criarGrid(grid, container) {
         container.append($(document.createElement('br')));
     }
 }
+/**
+ * @param  grid {[Grid]}
+ * @param  container {[DomElement]}
+ * @param  caminho 
+ * @description esta função irá pintar o caminho na grid
+ */
 function pintarGrid(grid, container, caminho) {
     if (container.children().length === 0) {
         criarGrid(grid, container);
@@ -85,7 +104,14 @@ function pintarGrid(grid, container, caminho) {
         }
     });
 }
-
+/**
+ * @param  grid {[Grid]}
+ * @param  container {[DomElement]}
+ * @param  caminho 
+ * @param ponto {[Node]}
+ * @param contador {[Integer}
+ * @description esta função pinta a celula, diferenciando as visitadas das nao visitadas
+ */
 function pintarCelula(grid, container, ponto, contador) {
     var ind = grid.largura * ponto.y + ponto.x;
     var celula = $('.celula', container).eq(ind);
@@ -100,7 +126,11 @@ function pintarCelula(grid, container, ponto, contador) {
         'background-color' : '#66' + hex[qtdAzul]
     });
 }
-
+/**
+ * @param  div {[DomElement]}
+ * @param  algoritmo
+ * @description gera as informações.
+ */
 function putInfo(div, algoritmo) {
     var innerHtml = '<h3>' + algoritmo.nome + '</h3>';
     innerHtml += 'Custo de processamento: ' + algoritmo.custo + '<br>';

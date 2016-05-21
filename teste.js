@@ -92,7 +92,11 @@ var teste5 = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ];
 
-
+/**
+ * @param  id {[Integer]}
+ * @description executa o experimento adequado com o teste adequado
+ * dependendo das opções escolhidas pelo usuario
+ */
 function selecionarExperimento(id) {
     var resposta = {}
     switch (id) {
