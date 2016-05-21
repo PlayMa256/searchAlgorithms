@@ -11,7 +11,7 @@ BestFirstWithBacktrack.prototype.findPath = function(nodeInicial, nodeFinal, gri
     var fechados = [];
     this.custo = 0;
     var abertos = new Heap(function(nodeA, nodeB){
-        nodeB.hVal-nodeA.hVal; 
+        return nodeA.hVal- nodeB.hVal;
     });
 
     nodeInicial.hVal = this.heuristica.getValue(nodeInicial, nodeFinal);
@@ -29,12 +29,8 @@ BestFirstWithBacktrack.prototype.findPath = function(nodeInicial, nodeFinal, gri
 
         // backtrack
         do {
-            vizinhos = grid.getVizinhos(node);
-            vizinhos = vizinhos.filter(function(a){
-                if(_.includes(fechados,a))
-                    return false;
-                else
-                    return true;
+            vizinhos = grid.getVizinhos(node).filter(function(a) {
+                return (!(_.includes(fechados,a)));
             });
             if (vizinhos.length == 0){
                 fechados.push(node);

@@ -1,3 +1,5 @@
+var hex = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
+
 $(document).ready(function() {
 
 })
@@ -74,18 +76,29 @@ function pintarGrid(grid, container, caminho) {
     }
     $('.celula.is-pintada', container).removeClass('is-pintada');
     if(!caminho) return;
-    caminho.forEach(function(ponto) {
+    qtdAzul = 0;
+    caminho.forEach(function(ponto, ind) {
         try {
-            pintarCelula(grid, container, ponto);
+            pintarCelula(grid, container, ponto, ind);
         } catch(err) {
             console.error('Pintura de ' + ponto.x + ',' + ponto.y + ' nao foi bem sucedida.');
         }
     });
 }
-function pintarCelula(grid, container, ponto) {
+
+function pintarCelula(grid, container, ponto, contador) {
     var ind = grid.largura * ponto.y + ponto.x;
     var celula = $('.celula', container).eq(ind);
-    celula.addClass('is-pintada');
+
+    // gradient
+    qtdAzul = contador % (hex.length * 2);
+    if (qtdAzul >= hex.length) {
+        qtdAzul = qtdAzul - hex.length;
+        qtdAzul = (hex.length - 1) - qtdAzul;
+    }
+    celula.addClass('is-pintada').css({
+        'background-color' : '#66' + hex[qtdAzul]
+    });
 }
 
 function putInfo(div, algoritmo) {
